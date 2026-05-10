@@ -71,6 +71,7 @@ yarn dev
 
 - This is a frontend application; there is no standalone backend server in this repository.
 - Deployment platforms: Vercel, Netlify, or any static hosting that supports Vite builds.
+- Live demo: https://unique-minds-one.vercel.app/
 - Make sure the required environment variables are configured in your hosting provider.
 
 ## Routes
