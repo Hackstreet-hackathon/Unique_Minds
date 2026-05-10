@@ -1,50 +1,101 @@
-# React + TypeScript + Vite
+# Unique Mind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Unique Mind is a Vite + React + TypeScript learning platform built for students, mentors, and admins. It combines personalized learning techniques with mentorship features, interactive dashboards, and AI-powered guidance.
 
-Currently, two official plugins are available:
+## What it includes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Modern frontend using React, Vite, Tailwind CSS, and Framer Motion
+- Supabase authentication and backend integration
+- Multi-role support for students, mentors, and admins
+- Learning technique pages for:
+  - Pomodoro
+  - Spaced Repetition
+  - Active Recall
+  - Feynman Technique
+- Student dashboard, quizzes, leaderboard, tasks, and chat interface
+- Admin dashboard for managing mentors, careers, skills, and subjects
+- AI-powered feedback in the Feynman technique page via Google Gemini
 
-## Expanding the ESLint configuration
+## Project structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- `src/App.tsx` — main landing page and feature overview
+- `src/main.tsx` — route definitions for the app
+- `src/context/AuthContext.tsx` — Supabase auth provider and session management
+- `src/utils/supabase.ts` — Supabase client initialization
+- `src/routes/` — application pages and dashboards
+- `src/routes/techniques/` — learning technique modules
 
-- Configure the top-level `parserOptions` property like this:
+## Environment variables
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The app requires the following environment variables at runtime:
+
+- `VITE_SUPABASE_URL` — your Supabase project URL
+- `VITE_SUPABASE_ANON_KEY` — Supabase anonymous public key
+
+Optional (for AI mentor features):
+
+- `VITE_GEMINI_API_KEY` — Google Gemini API key for AI-driven learning feedback
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Create a `.env` file in the project root with:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```env
+VITE_SUPABASE_URL=https://your-supabase-url.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_GEMINI_API_KEY=your-google-gemini-key
 ```
+
+3. Run the development server:
+
+```bash
+yarn dev
+```
+
+4. Open the local app in your browser at the URL shown in the terminal.
+
+## Scripts
+
+- `yarn dev` — start development server
+- `yarn build` — build production assets
+- `yarn preview` — preview the built app locally
+- `yarn lint` — run ESLint checks
+
+## Deployment notes
+
+- This is a frontend application; there is no standalone backend server in this repository.
+- Deployment platforms: Vercel, Netlify, or any static hosting that supports Vite builds.
+- Make sure the required environment variables are configured in your hosting provider.
+
+## Routes
+
+- `/` — landing page
+- `/login` — login page
+- `/signup` — signup and onboarding
+- `/dashboard` — student dashboard
+- `/chat` — chat interface
+- `/quiz` — quiz experience
+- `/Leaderboard` — leaderboard page
+- `/task` — task page
+- `/admin` — admin dashboard
+- `/techniques` — learning techniques overview
+- `/techniques/pomodoro`
+- `/techniques/spaced-repetition`
+- `/techniques/active-recall`
+- `/techniques/feynman`
+
+## Notes
+
+- The app relies on Supabase for auth and data storage.
+- AI feedback is available only if `VITE_GEMINI_API_KEY` is provided.
+- The current code includes a polished landing page, onboarding flow, and student/mentor/admin UX.
+
+## License
+
+This project is currently private and is not configured with an open-source license.
